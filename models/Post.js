@@ -5,11 +5,14 @@ const PostSchema = new Schema(
     author: { type: mongoose.Types.ObjectId, ref: "User" },
     description: { type: String },
     parent: { type: mongoose.Types.ObjectId, ref: "Post" },
-    images: { type: [String] },
+    images: { type: String },
     totalTrees: {
       type: Number,
     },
     location: {
+      type: String,
+    },
+    schoolName: {
       type: String,
     },
   },

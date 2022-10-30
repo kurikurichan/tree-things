@@ -1,4 +1,4 @@
-import connectMongo from "../../../lib/connectMongo";
+import connectMongo from "../../../lib/connectdb";
 import Post from "../../../models/Post";
 
 connectMongo();

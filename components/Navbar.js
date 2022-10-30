@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Navbar = () => {
-  const isAuthenticated = false;
+  const { data: session } = useSession();
+  console.log(session);
+
   return (
     <div className="container px-5 py-2 mx-auto">
       <div className="flex justify-between items-center">
@@ -48,7 +51,7 @@ const Navbar = () => {
             required
           />
         </div>
-        {isAuthenticated ? (
+        {session ? (
           <div className="flex items-center mt-4 lg:mt-0">
             <button
               className="hidden mx-4 text-gray-600 transition-colors duration-300 transform lg:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"

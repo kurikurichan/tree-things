@@ -1,24 +1,27 @@
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import React, { useState } from "react";
+import Router from "next/router";
 
 const login = () => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const [message, setMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const status = await signIn("credentials", {
-      email: userData.email,
-      password: userData.password,
-      redirect: false,
-    });
-
-    console.log(userData.email, userData.password);
-    console.log(status);
+    const email = userData.email;
+    const password = userData.password;
+    let options = { redirect: false, email, password, callbackUrl: "/" };
+    try {
+      const res = await signIn("credentials", options);
+      console.log(res);
+      return Router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

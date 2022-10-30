@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { startSession } from "mongoose";
 
 const AddSessionModal = ({ setShowModal }) => {
   const [userData, setUserData] = useState({
     description: "",
-    image: "",
+    imageUrl:
+      "https://images.pexels.com/photos/53435/tree-oak-landscape-view-53435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     totalTrees: "",
     location: "",
   });
 
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    console.log(session);
+  }, []);
   const handleSubmit = async () => {
     const data = {
+      author: session.user._id,
       description: userData.description,
       image: userData.imageUrl,
       totalTrees: userData.totalTrees,
       location: userData.location,
+      schoolName: session.user.schoolName,
     };
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,6 +35,7 @@ const AddSessionModal = ({ setShowModal }) => {
       });
 
       console.log(res);
+      setShowModal(false);
     } catch (error) {
       console.error(error);
     }
@@ -47,10 +58,10 @@ const AddSessionModal = ({ setShowModal }) => {
                 <div className="flex justify-center flex-col space-y-3">
                   <span className="text-lg text-center mb-2 font-extrabold text-gray-700">
                     {" "}
-                    Hi! name {name}
+                    Hi! name {session.user?.firstName}
                   </span>
 
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="upload_photo"
                       className="block px-3 py-2 overflow-hidden border border-gray-200 rounded-md shadow-sm focus-within:ring-1 focus-within:ring-zinc-600 focus-within:border-zinc-600"
@@ -87,7 +98,7 @@ const AddSessionModal = ({ setShowModal }) => {
                         //   onChange={handleOnChange}
                       ></input>
                     </label>
-                  </div>
+                  </div> */}
 
                   <label
                     htmlFor="treeAmount"
@@ -161,7 +172,7 @@ const AddSessionModal = ({ setShowModal }) => {
                   </button>
                   <button
                     className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigio-600 focus:ring-2"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => handleSubmit()}
                   >
                     Post
                   </button>
