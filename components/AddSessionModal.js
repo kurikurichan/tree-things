@@ -12,7 +12,7 @@ const AddSessionModal = ({ setShowModal }) => {
         <div className="flex items-center min-h-screen px-4 py-8">
           <div className="relative max-w-lg mx-auto bg-white rounded-md shadow-lg">
             <h4 className="text-lg p-4  bg-indigo-600 font-medium mb-4 text-center text-indigo-100">
-              Add New Tree Report?
+              New Tree Report
             </h4>
             <div className="mt-3 p-4 sm:flex">
               <div className="mt-2 text-center sm:ml-4 sm:text-left">
