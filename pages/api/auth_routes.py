@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
-from app.forms import LoginForm
-from app.forms import SignUpForm
+from .models import User, db
+from .forms import LoginForm
+from .forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -76,18 +76,6 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-# route to update user's scratchPad
-@auth_routes.route('/<int:userId>', methods=["PUT"])
-@login_required
-def scratch(userId):
-    print("-------accessed scratch pad")
-    if userId == current_user.id:
-        print("------------- passed user check ")
-        user = User.query.get(userId)
-        user.scratch = request.json['scratch']
-        print(user.scratch, "---------------")
-        db.session.commit()
-        return user.to_dict()
 
 @auth_routes.route('/unauthorized')
 def unauthorized():
