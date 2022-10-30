@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Search from "./Search";
 
 const Navbar = () => {
   const isAuthenticated = false;
@@ -40,13 +41,7 @@ const Navbar = () => {
               ></path>
             </svg>
           </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block p-4 pl-10 w-full text-sm font-Montserrat text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-zinc-500 focus:border-zinc-500"
-            placeholder="Search schools...."
-            required
-          />
+          <Search />
         </div>
         {isAuthenticated ? (
           <div className="flex items-center mt-4 lg:mt-0">
