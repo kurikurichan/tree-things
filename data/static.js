@@ -123,3 +123,67 @@ export const individualType = [
     text: "Parent",
   },
 ];
+
+
+export const treeData = [
+  {
+    school: "Wilburton",
+    description: "Planted a bunch of trees :) ",
+    address: "Seattle airport, International Boulevard, SeaTac, WA",
+    count: 10
+  },
+  {
+    school: "Woodridge",
+    description: "Planted a bunch of trees :) ",
+    address: "15854 42nd Ave S, Tukwila, WA 98188",
+    count: 2
+  },
+  {
+    school: "Wilburton",
+    description: "Planted a bunch of trees :) ",
+    address: "4415 S 140th St, Tukwila, WA 98168",
+    count: 4
+  },
+  {
+    school: "Woodridge",
+    description: "Planted a bunch of trees :) ",
+    address: "13735 24th Ave S, SeaTac, WA 98168",
+    count: 11
+  },
+  {
+    school: "Woodridge",
+    description: "Planted a bunch of trees :) ",
+    address: "6607 S 132nd St, Seattle, WA 98178",
+    count: 3
+  },
+  {
+    school: "Enatai",
+    description: "Planted a bunch of trees :) ",
+    address: "364 Thomas Ave SW, Renton, WA 98057",
+    count: 4
+  },
+  {
+    school: "Wilburton",
+    description: "Planted a bunch of trees :) ",
+    address: "901 12th Ave, Seattle, WA 98122",
+    count: 7
+  },
+  {
+    school: "Enatai",
+    description: "Planted a bunch of trees :) ",
+    address: "E Yesler Way, Seattle, WA 98122",
+    count: 3
+  },
+  {
+    school: "Enatai",
+    description: "Planted a bunch of trees :) ",
+    address: "2101 S Jackson St, Seattle, WA 98144",
+    count: 3
+  },
+  {
+    school: "Odle",
+    description: "Planted lots of trees :) Maples ",
+    address: "1414 S Weller St Suite C, Seattle, WA 98144",
+    count: 10
+  },
+]
