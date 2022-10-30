@@ -17,91 +17,91 @@ export const schoolData = [
   },
   {
     value: "Clyde Hill",
-    text: "Elementary",
+    text: "Clyde Hill Elementary",
   },
   {
     value: "Eastgate",
-    text: "Elementary",
+    text: "Eastgate Elementary",
   },
   {
     value: "Enatai",
-    text: "Elementary",
+    text: "Enatai Elementary",
   },
   {
     value: "Lake Hills",
-    text: "Elementary",
+    text: "Lake Hills Elementary",
   },
   {
     value: "Medina",
-    text: "Elementary",
+    text: "Medina Elementary",
   },
   {
     value: "Newport Heights",
-    text: "Elementary",
+    text: "Newport Heights Elementary",
   },
   {
     value: "Phantom Lake",
-    text: "Elementary",
+    text: "Phantom Lake Elementary",
   },
   {
     value: "Sherwood Forest",
-    text: "Elementary",
+    text: "Sherwood Forest Elementary",
   },
   {
     value: "Somerset",
-    text: "Elementary",
+    text: "Somerset Elementary",
   },
   {
     value: "Spiritridge",
-    text: "Elementary",
+    text: "Spiritridge Elementary",
   },
   {
     value: "Stevenson",
-    text: "Elementary",
+    text: "Stevenson Elementary",
   },
   {
     value: "Wilburton",
-    text: "Elementary",
+    text: "Wilburton Elementary",
   },
   {
     value: "Woodridge",
-    text: "Elementary",
+    text: "Woodridge Elementary",
   },
   {
     value: "Chinook",
-    text: "Middle School",
+    text: "Chinook Middle School",
   },
   {
     value: "Highland",
-    text: "Middle School",
+    text: "Highland Middle School",
   },
   {
     value: "Odle",
-    text: "Middle School",
+    text: "Odle Middle School",
   },
   {
     value: "Tillicum",
-    text: "Middle School",
+    text: "Tillicum Middle School",
   },
   {
     value: "Tyee",
-    text: "Middle School",
+    text: "Tyee Middle School",
   },
   {
     value: "Bellevue",
-    text: "High School",
+    text: "Bellevue High School",
   },
   {
     value: "Interlake",
-    text: "High School",
+    text: "Interlake High School",
   },
   {
     value: "Newport",
-    text: "High School",
+    text: "Newport High School",
   },
   {
     value: "Sammamish",
-    text: "High School",
+    text: "Sammamish High School",
   },
 ];
 
