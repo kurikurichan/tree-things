@@ -10,11 +10,14 @@ const login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const status = await signIn("credentials", {
-      redirect: false,
       email: userData.email,
       password: userData.password,
+      redirect: false,
     });
+
+    console.log(userData.email, userData.password);
     console.log(status);
   };
 

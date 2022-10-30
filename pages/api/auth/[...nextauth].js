@@ -44,6 +44,10 @@ export const authOptions = {
   session: {
     strategy: "jwt",
   },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    maxAge: 60 * 60 * 24 * 30,
+  },
   callbacks: {
     session: async ({ token, session }) => {
       if (session?.user && token?.sub) {

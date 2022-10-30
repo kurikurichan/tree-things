@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddSessionModal = ({ setShowModal }) => {
+  const [userData, setUserData] = useState({
+    description: "",
+    image: "",
+    totalTrees: "",
+    location: "",
+  });
+
+  const handleSubmit = async () => {
+    const data = {
+      description: userData.description,
+      image: userData.imageUrl,
+      totalTrees: userData.totalTrees,
+      location: userData.location,
+    };
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const name = "Mikey";
   return (
     <>
@@ -73,7 +101,29 @@ const AddSessionModal = ({ setShowModal }) => {
                     <input
                       type="text"
                       id="treeAmount"
+                      onChange={(e) =>
+                        setUserData({ ...userData, totalTrees: e.target.value })
+                      }
                       placeholder="Enter tree planted amount?"
+                      className="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                    />
+                  </label>
+                  <label
+                    htmlFor="treeAmount"
+                    className="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+                  >
+                    <span className="text-xs font-medium text-gray-700">
+                      {" "}
+                      Location?
+                    </span>
+
+                    <input
+                      type="text"
+                      id="treeAmount"
+                      onChange={(e) =>
+                        setUserData({ ...userData, location: e.target.value })
+                      }
+                      placeholder="Where were the trees planted?"
                       className="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                     />
                   </label>
@@ -90,6 +140,12 @@ const AddSessionModal = ({ setShowModal }) => {
                       type="text"
                       id="treeExperience"
                       rows={8}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          description: e.target.value,
+                        })
+                      }
                       placeholder="Talk about you planting experience?"
                       className="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                     ></textarea>
