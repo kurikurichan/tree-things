@@ -82,7 +82,7 @@ const LeaderBoard = ({ setShowLeaderBoard }) => {
           <div className="flex space-x-2 my-2 items-center justify-around">
             <button
               onClick={() => console.log(t.title, "was clicked")}
-              class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-500"
+              className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-500"
             >
               {t.title}
             </button>
@@ -90,8 +90,8 @@ const LeaderBoard = ({ setShowLeaderBoard }) => {
         ))}
       </div>
       <div className={style.inputBoxes}>
-        {data.map((school) => (
-          <div className="flex space-x-2 my-2 items-center justify-around">
+        {data.map((school, i) => (
+          <div className="flex space-x-2 my-2 items-center justify-around" key={i}>
             <span className="text-xl font-semibold">{school.schoolName}</span>
             <span className="text-md text-zinc-600">{school.points}</span>
           </div>
