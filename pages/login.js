@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 import React, { useState } from "react";
 
 const login = () => {
@@ -7,9 +8,14 @@ const login = () => {
     password: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
+    const status = await signIn("credentials", {
+      redirect: false,
+      email: userData.email,
+      password: userData.password,
+    });
+    console.log(status);
   };
 
   return (

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Router } from "next/router";
 import React, { useState, useEffect } from "react";
 import { schoolData, individualType } from "../data/static";
 
@@ -11,18 +12,54 @@ const signup = () => {
     password: "",
     retypePassword: "",
     schoolName: "",
-    indiviual: "",
-    teacherId: null,
+    individual: "",
+    teacherId: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
+    const data = {
+      email: userData.email,
+      password: userData.password,
+      lastName: userData.lastName,
+      firstName: userData.firstName,
+      schoolName: userData.schoolName,
+      individual: userData.individual,
+      teacherId: userData.teacherId,
+    };
+
+    if (
+      !userData.email ||
+      !userData.email.includes("@") ||
+      !userData.password
+    ) {
+      alert("Invalid details");
+      return;
+    }
+
+    if (userData.password !== userData.retypePassword) {
+      alert("Password Dont Match");
+      return;
+    }
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  useEffect(() => {
-    console.log(userData.indiviual);
-  }, [userData.individual]);
+  useEffect(() => {}, [userData.individual]);
 
   return (
     <section className="bg-white">
@@ -205,7 +242,6 @@ const signup = () => {
                   name="text"
                   onChange={(e) => {
                     setUserData({ ...userData, individual: e.target.value });
-                    console.log(userData.indiviual);
                   }}
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 >
