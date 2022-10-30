@@ -6,7 +6,7 @@ from sqlalchemy.sql import func
 
 db = SQLAlchemy()
 
-class TreeGroups(db.Model):
+class TreeGroup(db.Model):
     __tablename__ = "treeGroups"
 
     id = Column(Integer, primary_key=True)
@@ -16,6 +16,8 @@ class TreeGroups(db.Model):
     lat = Column(Float, nullable=True)
     lng = Column(Float, nullable=True)
     numOfTrees = Column(Integer, nullable=False)
+
+    user = relationship("User", back_populates="treeGroups")
 
     def to_dict(self):
         return {
@@ -28,13 +30,16 @@ class TreeGroups(db.Model):
             "numOfTrees": self.numOfTrees
         }
 
-class Teachers(db.Model):
+class Teacher(db.Model):
     __tablename__ = "teachers"
 
     id = Column(Integer, primary_key=True)
     userId = Column(Integer, db.ForeignKey("users.id"), nullable=False)
     schoolId = Column(Integer, db.ForeignKey("schools.id"), nullable=False)
     treeCount = Column(Integer, server_default=0, nullable=True)
+
+    user = relationship("User", back_populates="teachers")
+    school = relationship("School", back_populates="teachers")
 
     def to_dict(self):
         return {
@@ -45,7 +50,7 @@ class Teachers(db.Model):
         }
 
 
-class Schools(db.Model):
+class School(db.Model):
     __tablename__ = "schools"
 
     id = Column(Integer, primary_key=True)
@@ -54,6 +59,8 @@ class Schools(db.Model):
     treeCounter = Column(Integer, server_default=0, nullable=False)
     schoolType = Column(String, nullable=True) # Note: Options on frontend should be elementary, middle, highschool, college
     photo = Column(String, nullable=True)
+
+    teacher = relationship("Teacher", back_populates="schools", cascade="all, delete")
 
 
     def to_dict(self):

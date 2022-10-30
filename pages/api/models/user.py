@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     treesPlanted = db.Column(db.Integer, server_default=0, nullable=True)
 
-    notebooks = relationship("Notebook", back_populates="user", cascade= "all, delete")
-    pages = relationship("Page", back_populates="user", cascade= "all, delete")
+    trees = relationship("TreeGroup", back_populates="user")
+    teacher = relationship("Teacher", back_populates="user", cascade= "all, delete-orphan")
 
     @property
     def password(self):
@@ -35,5 +35,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'photo': self.photo,
-            ''
+            'isTeacher': self.isTeacher,
+            'treesPlanted': self.treesPlanted
         }
